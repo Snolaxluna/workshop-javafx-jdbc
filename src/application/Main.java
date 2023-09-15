@@ -1,18 +1,32 @@
 package application;
 
 import javafx.application.Application;
-import javafx.scene.layout.BorderPane;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class Main extends Application {
 
     @Override
-    public void start(Stage stage){
+    public void start(Stage stage) {
         try {
-            BorderPane root = new BorderPane();
-        }catch (Exception e){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/MainView.fxml"));
+            Parent parent = loader.load();
+            Scene mainScene = new Scene(parent);
+            stage.setScene(mainScene);
+            stage.setTitle("Sample JavaFX application");
+            stage.show();
+        } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+
 }
